@@ -3,16 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Metric Motion Labs — Finely &amp; ScribbleSync</title>
-<meta name="description" content="A tech lab building time intelligence. Our first product, Finely, is an AI calendar companion for iOS and Android. Beta launching 2026.">
+<title>Metric Motion Labs — ScribbleSync &amp; Finely</title>
+<meta name="description" content="A tech lab building time intelligence. ScribbleSync turns handwritten calendars into data. Finely is the AI calendar companion it powers. Beta launching 2026.">
 <!--
-  ┌───────────────────────────────────────────────────┐
-  │  finely — an AI calendar companion                  │
-  │  built by metric motion labs · corrales, nm         │
-  │                                                      │
-  │  your calendar knows when. finely knows why.        │
-  │  early access · mike@metricmotionlaboratories.com    │
-  └───────────────────────────────────────────────────┘
+  ┌─────────────────────────────────────────────────────┐
+  │  metric motion labs · corrales, nm                  │
+  │                                                     │
+  │  scribblesync — the engine.                         │
+  │     handwritten calendars → structured data.        │
+  │                                                     │
+  │  finely — the app.                                  │
+  │     your calendar, but it knows why.                │
+  │                                                     │
+  │  mike@metricmotionlaboratories.com                  │
+  └─────────────────────────────────────────────────────┘
 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -214,16 +218,19 @@
     font-weight: 400;
   }
 
-  /* Finely feature section */
-  .finely-section {
+  /* Product section (reused for ScribbleSync and Finely) */
+  .product-section {
     position: relative;
     padding: 64px 0;
     border-top: 1px solid var(--border);
+  }
+
+  .product-section:last-of-type {
     border-bottom: 1px solid var(--border);
     margin-bottom: 64px;
   }
 
-  .finely-section::before {
+  .product-section::before {
     content: '';
     position: absolute;
     left: 0;
@@ -246,7 +253,7 @@
 
   .section-eyebrow .bracket { color: var(--accent); }
 
-  .finely-header-row {
+  .product-header-row {
     display: flex;
     align-items: baseline;
     gap: 16px;
@@ -254,7 +261,7 @@
     margin-bottom: 28px;
   }
 
-  .finely-wordmark {
+  .product-wordmark {
     font-family: 'Syne', sans-serif;
     font-weight: 800;
     font-size: clamp(48px, 6vw, 76px);
@@ -263,9 +270,9 @@
     color: var(--text);
   }
 
-  .finely-wordmark .dot { color: var(--accent); }
+  .product-wordmark .dot { color: var(--accent); }
 
-  .finely-badge {
+  .product-badge {
     font-size: 11px;
     font-family: 'DM Mono', monospace;
     letter-spacing: 0.1em;
@@ -276,7 +283,7 @@
     border-radius: 100px;
   }
 
-  .finely-pitch {
+  .product-pitch {
     font-family: 'Syne', sans-serif;
     font-size: clamp(18px, 2.4vw, 26px);
     font-weight: 400;
@@ -287,12 +294,12 @@
     letter-spacing: -0.01em;
   }
 
-  .finely-pitch em {
+  .product-pitch em {
     font-style: italic;
     color: var(--accent);
   }
 
-  .finely-description {
+  .product-description {
     font-size: 14px;
     color: var(--muted);
     line-height: 1.75;
@@ -300,7 +307,7 @@
     margin-bottom: 36px;
   }
 
-  .finely-cta {
+  .product-cta {
     display: inline-flex;
     align-items: center;
     gap: 10px;
@@ -316,17 +323,17 @@
     transition: background 0.2s ease, border-color 0.2s ease;
   }
 
-  .finely-cta:hover {
+  .product-cta:hover {
     background: var(--accent-dim);
     border-color: var(--accent);
   }
 
-  .finely-cta .arrow {
+  .product-cta .arrow {
     transition: transform 0.2s ease;
     display: inline-block;
   }
 
-  .finely-cta:hover .arrow { transform: translateX(3px); }
+  .product-cta:hover .arrow { transform: translateX(3px); }
 
   /* Info grid */
   .info-grid {
@@ -413,15 +420,15 @@
     header { padding: 20px; }
     main { padding: 0 20px; }
     .hero { padding: 64px 0 48px; }
-    .finely-section { padding: 48px 0; margin-bottom: 48px; }
-    .finely-header-row { gap: 12px; }
+    .product-section { padding: 48px 0; }
+    .product-section:last-of-type { margin-bottom: 48px; }
+    .product-header-row { gap: 12px; }
     footer {
       padding: 20px;
       flex-direction: column;
       gap: 12px;
       align-items: flex-start;
     }
-
     .footer-nav { gap: 16px; }
   }
 </style>
@@ -466,29 +473,51 @@
       <span class="accent">Labs.</span>
     </h1>
     <p class="tagline">
-      A tech lab building time intelligence — starting with <em>Finely</em>, a calendar companion that understands why things are scheduled, not just when. Beta launching 2026.
+      A tech lab building time intelligence — AI tools that understand why things are scheduled, not just when. Beta launching 2026.
     </p>
   </section>
 
-  <section class="finely-section">
+  <section class="product-section">
     <div class="section-eyebrow">
       <span class="bracket">[</span>
-      <span>Our first product</span>
+      <span>The engine</span>
       <span class="bracket">]</span>
     </div>
-    <div class="finely-header-row">
-      <h2 class="finely-wordmark">finely<span class="dot">.</span></h2>
-      <span class="finely-badge">Beta · April 2026</span>
+    <div class="product-header-row">
+      <h2 class="product-wordmark">scribblesync<span class="dot">.</span></h2>
+      <span class="product-badge">Available 2026</span>
     </div>
-    <p class="finely-pitch">
+    <p class="product-pitch">
+      From scribbles to structure.
+    </p>
+    <p class="product-description">
+      An AI engine that turns handwritten calendars, planners, and notebooks into structured events, to-dos, and notes. Powers Finely. Available as a standalone API.
+    </p>
+    <a href="mailto:mike@metricmotionlaboratories.com?subject=ScribbleSync%20API%20access" class="product-cta">
+      <span>Request API access</span>
+      <span class="arrow">→</span>
+    </a>
+  </section>
+
+  <section class="product-section">
+    <div class="section-eyebrow">
+      <span class="bracket">[</span>
+      <span>The app</span>
+      <span class="bracket">]</span>
+    </div>
+    <div class="product-header-row">
+      <h2 class="product-wordmark">finely<span class="dot">.</span></h2>
+      <span class="product-badge">Beta · April 2026</span>
+    </div>
+    <p class="product-pitch">
       Your calendar knows when something is scheduled.<br>
       Finely, a calendar that knows <em>why</em>.
     </p>
-    <p class="finely-description">
+    <p class="product-description">
       An AI calendar companion for iOS and Android. Finely connects to your existing calendar to understand the context behind your events — helping you see not just what's scheduled, but why it matters and how your time actually adds up.
     </p>
     <!-- TODO: /finely will 404 until the landing page is deployed. Swap to mailto if deploying homepage first. -->
-    <a href="/finely" class="finely-cta">
+    <a href="/finely" class="product-cta">
       <span>Learn more · Early access</span>
       <span class="arrow">→</span>
     </a>
@@ -501,7 +530,7 @@
     </div>
     <div class="info-cell">
       <div class="cell-label">products</div>
-      <div class="cell-value">Finely · ScribbleSync</div>
+      <div class="cell-value">ScribbleSync · Finely</div>
     </div>
     <div class="info-cell">
       <div class="cell-label">location</div>
@@ -554,8 +583,8 @@
   ].join(';');
   const plain = 'font-family:monospace; font-size:12px; color:#6b6960; background:#0a0a08; padding: 2px 12px';
 
-  console.log('%c finely. ', styles);
-  console.log('%c a calendar that knows why — built at metric motion labs', plain);
+  console.log('%c metric motion labs ', styles);
+  console.log('%c scribblesync — the engine. finely — the app.', plain);
   console.log('%c ↑↑↓↓←→←→BA for a preview ', plain);
   console.log('%c mike@metricmotionlaboratories.com ', plain);
 
