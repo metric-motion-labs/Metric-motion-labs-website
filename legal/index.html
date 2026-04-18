@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Metric Motion Labs</title>
+  <meta name="description" content="Privacy Policy for Finely and ScribbleSync by Metric Motion Labs, LLC.">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a08;
+      --surface: #111110;
+      --border: rgba(255,255,255,0.07);
+      --border-accent: rgba(255,255,255,0.14);
+      --text: #f0ede6;
+      --muted: #6b6960;
+      --accent: #c8f065;
+      --accent-dim: rgba(200,240,101,0.12);
+    }
+
+    html, body { height: 100%; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Mono', monospace;
+      font-weight: 300;
+      line-height: 1.75;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* Grid overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Noise texture */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.6;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Header */
+    header {
+      position: relative;
+      z-index: 1;
+      padding: 32px;
+      max-width: 760px;
+      margin: 0 auto;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo:hover { text-decoration: none; }
+
+    .logo-mark {
+      width: 32px;
+      height: 32px;
+      position: relative;
+    }
+
+    .logo-text {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: 0.05em;
+      color: var(--text);
+    }
+
+    .logo-text span {
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    .header-nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    .header-nav a {
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .header-nav a:hover { color: var(--text); text-decoration: none; }
+
+    /* Content */
+    .content {
+      position: relative;
+      z-index: 1;
+      flex: 1;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 32px;
+      width: 100%;
+    }
+
+    /* Document header */
+    .doc-header {
+      padding: 64px 0 48px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 48px;
+    }
+
+    .doc-eyebrow {
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .doc-eyebrow .bracket { color: var(--accent); }
+
+    .doc-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .doc-meta {
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+    }
+
+    .doc-meta strong {
+      color: var(--text);
+      font-weight: 400;
+    }
+
+    /* Intro callout */
+    .intro {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 2px solid var(--accent);
+      border-radius: 0 4px 4px 0;
+      padding: 20px 24px;
+      margin-bottom: 48px;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .intro strong {
+      color: var(--text);
+      font-weight: 400;
+    }
+
+    /* Sections */
+    section {
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+
+    h2::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -1px;
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+    }
+
+    h3 {
+      font-family: 'DM Mono', monospace;
+      font-weight: 500;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin: 24px 0 8px;
+    }
+
+    p {
+      font-size: 13px;
+      margin-bottom: 14px;
+      line-height: 1.8;
+      color: var(--text);
+    }
+
+    p:last-child { margin-bottom: 0; }
+
+    p strong {
+      font-weight: 400;
+      color: var(--accent);
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 8px 0 14px;
+    }
+
+    ul li {
+      padding: 4px 0 4px 20px;
+      position: relative;
+      font-size: 13px;
+      line-height: 1.75;
+    }
+
+    ul li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--muted);
+      font-weight: 300;
+    }
+
+    ul li strong {
+      font-weight: 400;
+      color: var(--accent);
+    }
+
+    /* Tables */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0 14px;
+      font-size: 12px;
+    }
+
+    .data-table th {
+      text-align: left;
+      font-weight: 500;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      padding: 8px 12px 8px 0;
+      border-bottom: 1px solid var(--border-accent);
+    }
+
+    .data-table td {
+      padding: 10px 12px 10px 0;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      line-height: 1.6;
+      color: var(--text);
+    }
+
+    .data-table tr:last-child td { border-bottom: none; }
+
+    .data-table td strong {
+      font-weight: 400;
+      color: var(--text);
+    }
+
+    .data-table td small {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    /* Contact card */
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 20px 24px;
+      font-size: 13px;
+    }
+
+    .contact-card p { margin-bottom: 4px; }
+
+    .contact-card p strong {
+      color: var(--text);
+      font-weight: 400;
+    }
+
+    /* Footer */
+    footer {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid var(--border);
+      padding: 24px 32px;
+      max-width: 760px;
+      margin: 0 auto;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    .footer-nav { display: flex; gap: 20px; }
+
+    .footer-nav a {
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: color 0.2s ease;
+    }
+
+    .footer-nav a:hover { color: var(--text); text-decoration: none; }
+
+    @media (max-width: 600px) {
+      header { padding: 20px; }
+      .content { padding: 0 20px; }
+      .doc-header { padding: 48px 0 36px; }
+      .data-table { display: block; overflow-x: auto; }
+      footer {
+        padding: 20px;
+        flex-direction: column;
+        gap: 12px;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="logo">
+    <svg class="logo-mark" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0.5" y="0.5" width="31" height="31" stroke="rgba(255,255,255,0.15)" rx="2"/>
+      <line x1="6" y1="26" x2="6" y2="16" stroke="#c8f065" stroke-width="2"/>
+      <line x1="11" y1="26" x2="11" y2="10" stroke="#c8f065" stroke-width="2"/>
+      <line x1="16" y1="26" x2="16" y2="18" stroke="#c8f065" stroke-width="2"/>
+      <line x1="21" y1="26" x2="21" y2="8" stroke="#c8f065" stroke-width="2"/>
+      <line x1="26" y1="26" x2="26" y2="14" stroke="#c8f065" stroke-width="2"/>
+      <line x1="4" y1="16" x2="28" y2="16" stroke="rgba(255,255,255,0.12)" stroke-width="0.75" stroke-dasharray="1.5 2"/>
+    </svg>
+    <div class="logo-text">Metric Motion <span>Labs</span></div>
+  </a>
+  <nav class="header-nav">
+    <a href="/">Home</a>
+    <a href="/legal/terms/">Terms</a>
+  </nav>
+</header>
+
+<div class="content">
+  <div class="doc-header">
+    <div class="doc-eyebrow">
+      <span class="bracket">[</span>
+      <span>Legal</span>
+      <span class="bracket">]</span>
+    </div>
+    <h1 class="doc-title">Privacy Policy</h1>
+    <p class="doc-meta"><strong>Effective date:</strong> March 20, 2026 &nbsp;&middot;&nbsp; <strong>Version:</strong> 1.0</p>
+  </div>
+
+  <div class="intro"><strong>The short version:</strong> Finely processes photos of your physical calendars to create digital events. We don't sell your data. Your calendar photos are processed to extract event information and are not stored permanently. You can delete your account and all associated data at any time.</div>
+
+  <section id="who-we-are">
+    <h2>1. Who We Are</h2>
+    <p>Finely is a mobile application developed and operated by <strong>Metric Motion Labs, LLC</strong> ("we," "us," or "our"). Finely lets you photograph physical calendars and automatically sync detected events to your Google Calendar. AI-powered image parsing is provided by our proprietary ScribbleSync service, which we own and operate.</p>
+    <p>This Privacy Policy applies to the Finely mobile app and all related services. It does not apply to third-party services you connect to Finely, such as Google Calendar, which have their own privacy policies.</p>
+  </section>
+
+  <section id="what-we-collect">
+    <h2>2. Information We Collect</h2>
+
+    <h3>Account Information</h3>
+    <p>When you create a Finely account, we collect:</p>
+    <ul>
+      <li>Email address</li>
+      <li>Password (stored as a salted hash — we never see your plaintext password)</li>
+    </ul>
+
+    <h3>Google Calendar Connection</h3>
+    <p>When you connect your Google Calendar, we receive and store:</p>
+    <ul>
+      <li>Your Google account name and email address</li>
+      <li>An OAuth refresh token that allows Finely to write events to your calendar on your behalf</li>
+      <li>The list of your Google Calendars (names and IDs) so you can choose which calendar to sync to</li>
+    </ul>
+    <p>We do not read, store, or analyze the existing events in your Google Calendar.</p>
+
+    <h3>Calendar Photos</h3>
+    <p>When you scan a calendar, the photo you capture is sent to our ScribbleSync AI parsing service, which extracts event details (titles, dates, times, categories) from the image. Photos are processed in real time and <strong>are not stored</strong> after parsing is complete. Extracted event data is returned to your device and, with your confirmation, synced to your Google Calendar.</p>
+
+    <h3>Usage Data</h3>
+    <p>We store the following data associated with your account:</p>
+    <ul>
+      <li>Number of scans performed and events created, aggregated by month</li>
+      <li>Events you have synced to Google Calendar (title, date/time, category, calendar ID)</li>
+      <li>Timestamps of account creation and last login</li>
+    </ul>
+
+    <h3>Analytics</h3>
+    <p>We use <strong>Mixpanel</strong> to collect anonymized, aggregated analytics about how the app is used (e.g., which features are used most, where users drop off). This data does not include the contents of your calendar photos or events. You can opt out of analytics in the app's Settings screen.</p>
+
+    <h3>Device and Technical Data</h3>
+    <p>Our backend and cloud infrastructure automatically log standard technical data such as request timestamps, error codes, and anonymized IP addresses for security and reliability purposes. These logs are retained for 30 days and are not used for advertising.</p>
+  </section>
+
+  <section id="how-we-use">
+    <h2>3. How We Use Your Information</h2>
+    <table class="data-table">
+      <thead>
+        <tr><th>Purpose</th><th>Data Used</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Provide and operate the Finely service</td><td>Account info, Google OAuth token, parsed event data</td></tr>
+        <tr><td>Sync events to your Google Calendar</td><td>OAuth token, parsed event data</td></tr>
+        <tr><td>Display your usage statistics in the app</td><td>Scan count, event count</td></tr>
+        <tr><td>Improve the app and fix bugs</td><td>Anonymized analytics, error logs</td></tr>
+        <tr><td>Authenticate and secure your account</td><td>Email, hashed password, session tokens</td></tr>
+        <tr><td>Respond to support requests</td><td>Email address, account information you share with us</td></tr>
+      </tbody>
+    </table>
+    <p>We do not use your data for advertising, profiling, or sale to third parties.</p>
+  </section>
+
+  <section id="third-parties">
+    <h2>4. Third-Party Services</h2>
+    <p>Finely relies on the following third-party services to operate:</p>
+    <table class="data-table">
+      <thead>
+        <tr><th>Service</th><th>Purpose</th><th>Data Shared</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Google</strong><br/><small>(Calendar API, OAuth)</small></td><td>Calendar event sync and account authentication</td><td>OAuth tokens, event data you choose to sync</td></tr>
+        <tr><td><strong>Supabase</strong></td><td>User account storage and authentication</td><td>Email, hashed password, account metadata</td></tr>
+        <tr><td><strong>Google Cloud Run</strong></td><td>Backend server hosting</td><td>All data passes through our backend running on this infrastructure</td></tr>
+        <tr><td><strong>Mixpanel</strong></td><td>Product analytics</td><td>Anonymized usage events (no personal data, no calendar content)</td></tr>
+      </tbody>
+    </table>
+    <p>Each of these providers has their own privacy policy and data practices. We select providers that offer strong data protection commitments.</p>
+    <p><strong>Google API Limited Use:</strong> Finely's use of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google API Services User Data Policy</a>, including the Limited Use requirements. We only access the Google Calendar scopes necessary to write events on your behalf. We do not share Google user data with any other third parties or use it for purposes beyond providing the Finely service.</p>
+  </section>
+
+  <section id="data-retention">
+    <h2>5. Data Retention</h2>
+    <ul>
+      <li><strong>Calendar photos:</strong> Not retained. Deleted immediately after parsing.</li>
+      <li><strong>Parsed events:</strong> Retained in your account until you delete them or delete your account.</li>
+      <li><strong>Account data:</strong> Retained for as long as your account is active.</li>
+      <li><strong>Usage statistics:</strong> Retained for the lifetime of your account.</li>
+      <li><strong>Server logs:</strong> Retained for 30 days, then automatically deleted.</li>
+      <li><strong>Analytics data:</strong> Retained by Mixpanel per their data retention policy.</li>
+    </ul>
+  </section>
+
+  <section id="your-rights">
+    <h2>6. Your Rights and Choices</h2>
+    <p>You have the following rights with respect to your data:</p>
+    <ul>
+      <li><strong>Access:</strong> You can view your account information and synced events at any time within the app.</li>
+      <li><strong>Delete your account:</strong> You can permanently delete your account from Settings &rarr; Account &rarr; Delete Account. This removes your email, credentials, synced event records, and usage data from our systems.</li>
+      <li><strong>Disconnect Google Calendar:</strong> You can revoke Finely's access to your Google Calendar at any time from Settings, or directly from your Google account at <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">myaccount.google.com/permissions</a>.</li>
+      <li><strong>Opt out of analytics:</strong> You can disable Mixpanel analytics from Settings &rarr; Privacy.</li>
+      <li><strong>Data export:</strong> To request a copy of your data, contact us at the address below.</li>
+    </ul>
+    <p>If you are located in the European Economic Area, United Kingdom, or California, you may have additional rights under applicable law (GDPR, UK GDPR, CCPA). Please contact us to exercise these rights.</p>
+  </section>
+
+  <section id="children">
+    <h2>7. Children's Privacy</h2>
+    <p>Finely is not directed to children under the age of 13. We do not knowingly collect personal information from children under 13. If we learn that we have inadvertently collected such information, we will delete it promptly. If you believe a child under 13 has provided us with personal information, please contact us.</p>
+  </section>
+
+  <section id="security">
+    <h2>8. Security</h2>
+    <p>We implement industry-standard security measures including encrypted connections (HTTPS/TLS), hashed password storage, short-lived authentication tokens, and access controls on our backend infrastructure. However, no method of transmission over the internet or electronic storage is 100% secure.</p>
+  </section>
+
+  <section id="changes">
+    <h2>9. Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time. When we do, we will update the effective date at the top of this page and, for material changes, notify you via email or an in-app notice. Your continued use of Finely after changes take effect constitutes your acceptance of the revised policy.</p>
+  </section>
+
+  <section id="contact">
+    <h2>10. Contact Us</h2>
+    <p>If you have questions, concerns, or requests regarding this Privacy Policy, please contact us:</p>
+    <div class="contact-card">
+      <p><strong>Metric Motion Labs, LLC</strong></p>
+      <p>Email: <a href="mailto:mike@metricmotionlaboratories.com">mike@metricmotionlaboratories.com</a></p>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <span>&copy; 2026 Metric Motion Laboratories LLC</span>
+  <nav class="footer-nav">
+    <a href="/">Home</a>
+    <a href="/legal/terms/">Terms</a>
+  </nav>
+  <span>Privacy Policy v1.0</span>
+</footer>
+
+</body>
+</html>
