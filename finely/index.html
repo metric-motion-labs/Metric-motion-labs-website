@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finely — A calendar that knows why</title>
+<meta name="description" content="Finely is an AI calendar companion for iOS and Android. It connects to your existing calendar to understand the context behind your events — not just what's scheduled, but why it matters.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #fafaf8;
+    --text: #1a1a1a;
+    --muted: #7a7a72;
+    --accent: #534AB7;
+    --accent-light: rgba(83,74,183,0.08);
+    --border: rgba(26,26,26,0.08);
+  }
+
+  html, body { height: 100%; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; }
+
+  /* Header */
+  header {
+    padding: 28px 32px;
+    max-width: 960px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .logo-mark {
+    width: 34px;
+    height: 34px;
+    background: var(--accent);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    line-height: 1;
+  }
+
+  .logo-wordmark {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    color: var(--text);
+  }
+
+  .header-link {
+    font-size: 13px;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: color 0.2s ease;
+  }
+
+  .header-link:hover { color: var(--text); }
+
+  /* Main */
+  main {
+    flex: 1;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 32px;
+    width: 100%;
+  }
+
+  /* Hero */
+  .hero {
+    padding: 80px 0 64px;
+    max-width: 640px;
+  }
+
+  .hero-label {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 28px;
+  }
+
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(36px, 5.5vw, 54px);
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--text);
+    margin-bottom: 12px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-sub {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(36px, 5.5vw, 54px);
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--muted);
+    margin-bottom: 48px;
+  }
+
+  .hero-sub em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  /* Divider */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 0;
+  }
+
+  /* About section */
+  .about {
+    padding: 64px 0;
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 48px;
+    max-width: 640px;
+  }
+
+  .about-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding-top: 4px;
+  }
+
+  .about-body p {
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--text);
+    margin-bottom: 20px;
+  }
+
+  .about-body p:last-child { margin-bottom: 0; }
+
+  .about-body em {
+    font-style: italic;
+  }
+
+  /* Features */
+  .features {
+    padding: 64px 0;
+    max-width: 640px;
+  }
+
+  .features-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 32px;
+  }
+
+  .feature-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .feature-list li {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text);
+    padding-left: 20px;
+    position: relative;
+  }
+
+  .feature-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  /* CTA */
+  .cta-section {
+    padding: 64px 0 80px;
+    max-width: 640px;
+  }
+
+  .cta-section h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(28px, 4vw, 38px);
+    font-weight: 400;
+    line-height: 1.25;
+    color: var(--text);
+    margin-bottom: 16px;
+  }
+
+  .cta-section p {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #fff;
+    background: var(--accent);
+    text-decoration: none;
+    padding: 14px 28px;
+    border-radius: 100px;
+    transition: background 0.2s ease;
+  }
+
+  .cta-button:hover { background: #453dA0; }
+
+  .cta-button .arrow {
+    display: inline-block;
+    transition: transform 0.2s ease;
+  }
+
+  .cta-button:hover .arrow { transform: translateX(3px); }
+
+  /* Footer */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 24px 32px;
+    max-width: 960px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .footer-back {
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .footer-back:hover { color: var(--text); }
+
+  .powered-by {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .powered-by a {
+    text-decoration: none;
+    color: var(--muted);
+    transition: color 0.2s ease;
+  }
+
+  .powered-by a:hover { color: var(--text); }
+
+  @media (max-width: 600px) {
+    header { padding: 20px; }
+    main { padding: 0 20px; }
+    .hero { padding: 56px 0 48px; }
+    .about {
+      grid-template-columns: 1fr;
+      gap: 16px;
+      padding: 48px 0;
+    }
+    .features { padding: 48px 0; }
+    .cta-section { padding: 48px 0 64px; }
+    footer {
+      padding: 20px;
+      flex-direction: column;
+      gap: 12px;
+      align-items: flex-start;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="/finely" class="logo">
+    <div class="logo-mark">F</div>
+    <div class="logo-wordmark">Finely</div>
+  </a>
+  <a href="/" class="header-link">Metric Motion Labs</a>
+</header>
+
+<main>
+  <section class="hero">
+    <p class="hero-label">AI Calendar Companion</p>
+    <h1>Your calendar knows when something is scheduled.</h1>
+    <p class="hero-sub">Finely, a calendar that knows <em>why</em>.</p>
+  </section>
+
+  <hr class="divider">
+
+  <section class="about">
+    <div class="about-label">About</div>
+    <div class="about-body">
+      <p>
+        Finely is an AI calendar companion for iOS and Android. It connects to your existing calendar to understand the <em>context</em> behind your events — helping you see not just what's scheduled, but why it matters and how your time actually adds up.
+      </p>
+      <p>
+        Powered by <em>ScribbleSync</em>, our AI engine that turns handwritten calendars and planners into structured data, Finely bridges the gap between how you naturally plan and how digital calendars work.
+      </p>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="features">
+    <div class="features-label">What Finely does</div>
+    <ul class="feature-list">
+      <li>Connects to your existing calendar — Google, Apple, Outlook</li>
+      <li>Understands the context and intent behind each event</li>
+      <li>Captures handwritten schedules via ScribbleSync and syncs them automatically</li>
+      <li>Shows how your time adds up across projects, people, and priorities</li>
+      <li>Learns your patterns to surface what matters most</li>
+    </ul>
+  </section>
+
+  <hr class="divider">
+
+  <section class="cta-section">
+    <h2>Get early access</h2>
+    <p>Finely is launching in beta in 2026. Reach out to get on the early access list.</p>
+    <a href="mailto:mike@metricmotionlaboratories.com" class="cta-button">
+      <span>Request early access</span>
+      <span class="arrow">&rarr;</span>
+    </a>
+  </section>
+</main>
+
+<footer>
+  <a href="/" class="footer-back">&larr; metricmotionlaboratories.com</a>
+  <div class="powered-by">
+    <span>Powered by</span>
+    <a href="/">ScribbleSync</a>
+  </div>
+</footer>
+
+</body>
+</html>
