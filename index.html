@@ -3,17 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Metric Motion Laboratories</title>
+<title>Metric Motion Labs — Finely &amp; ScribbleSync</title>
+<meta name="description" content="A software lab building time intelligence. Our first product, Finely, is an AI calendar companion for iOS and Android. Beta launching 2026.">
 <!--
-  ┌─────────────────────────────────────────────────────┐
-  │  finely — an intelligent time app                   │
+  ┌───────────────────────────────────────────────────┐
+  │  finely — an AI calendar companion                  │
   │  built by metric motion labs · corrales, nm         │
-  │                                                     │
-  │  your calendar, finally working for you.            │
-  │  coming soon · mike@metricmotionlaboratories.com    │
-  └─────────────────────────────────────────────────────┘
+  │                                                      │
+  │  your calendar knows when. finely knows why.        │
+  │  early access · mike@metricmotionlaboratories.com    │
+  └───────────────────────────────────────────────────┘
 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -29,9 +31,7 @@
     --accent-dim: rgba(200,240,101,0.12);
   }
 
-  html, body {
-    height: 100%;
-  }
+  html, body { height: 100%; }
 
   body {
     background: var(--bg);
@@ -161,8 +161,7 @@
 
   /* Hero */
   .hero {
-    padding: 100px 0 80px;
-    flex: 1;
+    padding: 100px 0 72px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -197,40 +196,137 @@
     margin-bottom: 8px;
   }
 
-  h1 .accent {
-    color: var(--accent);
-  }
-
-  h1 .dim {
-    color: var(--muted);
-  }
+  h1 .accent { color: var(--accent); }
+  h1 .dim    { color: var(--muted); }
 
   .tagline {
     margin-top: 40px;
     font-size: 14px;
     color: var(--muted);
-    line-height: 1.7;
-    max-width: 480px;
+    line-height: 1.75;
+    max-width: 560px;
     letter-spacing: 0.02em;
   }
 
-  /* Divider */
-  .divider {
-    margin: 64px 0;
-    height: 1px;
-    background: var(--border);
-    position: relative;
+  .tagline em {
+    font-style: italic;
+    color: var(--text);
+    font-weight: 400;
   }
 
-  .divider::after {
+  /* Finely feature section */
+  .finely-section {
+    position: relative;
+    padding: 64px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 64px;
+  }
+
+  .finely-section::before {
     content: '';
     position: absolute;
     left: 0;
-    top: 0;
+    top: -1px;
+    width: 120px;
     height: 1px;
-    width: 80px;
     background: linear-gradient(90deg, var(--accent), transparent);
   }
+
+  .section-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-eyebrow .bracket { color: var(--accent); }
+
+  .finely-header-row {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+  }
+
+  .finely-wordmark {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(48px, 6vw, 76px);
+    letter-spacing: -0.035em;
+    line-height: 0.9;
+    color: var(--text);
+  }
+
+  .finely-wordmark .dot { color: var(--accent); }
+
+  .finely-badge {
+    font-size: 11px;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    background: var(--accent-dim);
+    border: 1px solid rgba(200,240,101,0.2);
+    padding: 5px 12px;
+    border-radius: 100px;
+  }
+
+  .finely-pitch {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(18px, 2.4vw, 26px);
+    font-weight: 400;
+    line-height: 1.4;
+    color: var(--text);
+    margin-bottom: 24px;
+    max-width: 640px;
+    letter-spacing: -0.01em;
+  }
+
+  .finely-pitch em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .finely-description {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.75;
+    max-width: 580px;
+    margin-bottom: 36px;
+  }
+
+  .finely-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    padding: 12px 22px;
+    border: 1px solid rgba(200,240,101,0.3);
+    border-radius: 100px;
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+
+  .finely-cta:hover {
+    background: var(--accent-dim);
+    border-color: var(--accent);
+  }
+
+  .finely-cta .arrow {
+    transition: transform 0.2s ease;
+    display: inline-block;
+  }
+
+  .finely-cta:hover .arrow { transform: translateX(3px); }
 
   /* Info grid */
   .info-grid {
@@ -263,6 +359,15 @@
     font-weight: 400;
   }
 
+  .cell-value a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+  }
+
+  .cell-value a:hover { border-bottom-color: var(--accent); }
+
   /* Footer */
   footer {
     position: relative;
@@ -275,10 +380,22 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 16px;
     font-size: 11px;
     color: var(--muted);
     letter-spacing: 0.05em;
   }
+
+  .footer-nav { display: flex; gap: 20px; }
+
+  .footer-nav a {
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: color 0.2s ease;
+  }
+
+  .footer-nav a:hover { color: var(--text); }
 
   /* Corner marker (decorative) */
   .corner-mark {
@@ -296,7 +413,16 @@
     header { padding: 20px; }
     main { padding: 0 20px; }
     .hero { padding: 64px 0 48px; }
-    footer { padding: 20px; flex-direction: column; gap: 8px; align-items: flex-start; }
+    .finely-section { padding: 48px 0; margin-bottom: 48px; }
+    .finely-header-row { gap: 12px; }
+    footer {
+      padding: 20px;
+      flex-direction: column;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .footer-nav { gap: 16px; }
   }
 </style>
 </head>
@@ -340,12 +466,33 @@
       <span class="accent">Labs.</span>
     </h1>
     <p class="tagline">
-      Building products at the intersection of workforce development,
-      technology, and data. Something is in motion — check back soon.
+      A software lab building time intelligence — starting with <em>Finely</em>, a calendar companion that understands why things are scheduled, not just when. Beta launching 2026.
     </p>
   </section>
 
-  <div class="divider"></div>
+  <section class="finely-section">
+    <div class="section-eyebrow">
+      <span class="bracket">[</span>
+      <span>Our first product</span>
+      <span class="bracket">]</span>
+    </div>
+    <div class="finely-header-row">
+      <h2 class="finely-wordmark">finely<span class="dot">.</span></h2>
+      <span class="finely-badge">Beta · April 2026</span>
+    </div>
+    <p class="finely-pitch">
+      Your calendar knows when something is scheduled.<br>
+      Finely, a calendar that knows <em>why</em>.
+    </p>
+    <p class="finely-description">
+      An AI calendar companion for iOS and Android. Finely connects to your existing calendar to understand the context behind your events — helping you see not just what's scheduled, but why it matters and how your time actually adds up.
+    </p>
+    <!-- TODO: /finely will 404 until the landing page is deployed. Swap to mailto if deploying homepage first. -->
+    <a href="/finely" class="finely-cta">
+      <span>Learn more · Early access</span>
+      <span class="arrow">→</span>
+    </a>
+  </section>
 
   <div class="info-grid">
     <div class="info-cell">
@@ -353,8 +500,8 @@
       <div class="cell-value">In development</div>
     </div>
     <div class="info-cell">
-      <div class="cell-label">focus</div>
-      <div class="cell-value">Workforce &amp; Technology</div>
+      <div class="cell-label">products</div>
+      <div class="cell-value">Finely · ScribbleSync</div>
     </div>
     <div class="info-cell">
       <div class="cell-label">location</div>
@@ -362,32 +509,35 @@
     </div>
     <div class="info-cell">
       <div class="cell-label">contact</div>
-      <div class="cell-value">mike@metricmotionlaboratories.com</div>
+      <div class="cell-value"><a href="mailto:mike@metricmotionlaboratories.com">mike@metricmotionlaboratories.com</a></div>
     </div>
   </div>
 </main>
 
 <footer>
   <span>&copy; 2026 Metric Motion Laboratories LLC</span>
+  <nav class="footer-nav">
+    <a href="/legal/">Privacy</a>
+    <a href="/legal/terms/">Terms</a>
+  </nav>
   <span>metricmotionlaboratories.com</span>
 </footer>
 
-<!-- EASTER EGG 1: console message for devs who peek under the hood -->
-<!-- EASTER EGG 2: konami code (↑↑↓↓←→←→BA) reveals finely teaser -->
+<!-- EASTER EGG: konami code (↑↑↓↓←→←→BA) reveals a finely mini-card. Preserved as a flourish. -->
 
 <div id="finely-modal" style="display:none; position:fixed; inset:0; z-index:100; background:rgba(0,0,0,0.85); align-items:center; justify-content:center; backdrop-filter:blur(4px);">
   <div style="background:#0e0e0c; border:1px solid rgba(200,240,101,0.25); border-radius:6px; padding:48px; max-width:480px; width:90%; position:relative; font-family:'DM Mono',monospace;">
     <button onclick="document.getElementById('finely-modal').style.display='none'" style="position:absolute; top:16px; right:20px; background:none; border:none; color:#6b6960; font-size:18px; cursor:pointer; font-family:inherit;">✕</button>
     <div style="font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:#6b6960; margin-bottom:24px;">you found something</div>
     <div style="font-family:'Syne',sans-serif; font-size:40px; font-weight:800; color:#f0ede6; line-height:1; margin-bottom:8px;">finely.</div>
-    <div style="font-size:12px; color:#c8f065; letter-spacing:0.08em; margin-bottom:28px;">an intelligent time app</div>
+    <div style="font-size:12px; color:#c8f065; letter-spacing:0.08em; margin-bottom:28px;">a calendar that knows why</div>
     <p style="font-size:13px; color:#6b6960; line-height:1.8; margin-bottom:32px;">
-      Your calendar knows <em style="color:#f0ede6;">when</em> things happen.<br>
-      Finely knows <em style="color:#f0ede6;">why</em> they should.
+      Your calendar knows when something is <em style="color:#f0ede6;">scheduled</em>.<br>
+      Finely, a calendar that knows <em style="color:#f0ede6;">why</em>.
     </p>
     <div style="border-top:1px solid rgba(255,255,255,0.07); padding-top:24px;">
-      <div style="font-size:11px; color:#6b6960; margin-bottom:6px;">want early access?</div>
-      <div style="font-size:13px; color:#f0ede6;">mike@metricmotionlaboratories.com</div>
+      <div style="font-size:11px; color:#6b6960; margin-bottom:6px;">early access:</div>
+      <a href="/finely" style="font-size:13px; color:#c8f065; text-decoration:none; border-bottom:1px solid currentColor;">metricmotionlaboratories.com/finely</a>
     </div>
   </div>
 </div>
@@ -405,7 +555,7 @@
   const plain = 'font-family:monospace; font-size:12px; color:#6b6960; background:#0a0a08; padding: 2px 12px';
 
   console.log('%c finely. ', styles);
-  console.log('%c an intelligent time app — built here at metric motion labs', plain);
+  console.log('%c a calendar that knows why — built at metric motion labs', plain);
   console.log('%c ↑↑↓↓←→←→BA for a preview ', plain);
   console.log('%c mike@metricmotionlaboratories.com ', plain);
 
